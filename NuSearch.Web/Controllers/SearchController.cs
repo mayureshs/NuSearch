@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Nest;
@@ -77,10 +78,12 @@ namespace NuSearch.Web.Controllers
 		        )
 	        );
 
-			var authors = result.Aggregations.Nested("authors")
+           var authors = result.Aggregations.Nested("authors")
 				.Terms("author-names")
 				.Buckets
 				.ToDictionary(k => k.Key, v => v.DocCount);
+
+           Debug.WriteLine(result.DebugInformation.Substring(0, result.DebugInformation.IndexOf("# Response", StringComparison.Ordinal)));
 
 			var model = new SearchViewModel
 			{

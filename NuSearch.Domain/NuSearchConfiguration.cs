@@ -9,15 +9,15 @@ namespace NuSearch.Domain
 {
 	public static class NuSearchConfiguration
     {
-        public static ElasticClient GetClient() => new ElasticClient(_connectionSettings);
+        public static IElasticClient GetClient() => new ElasticClient(_connectionSettings);
 
         static NuSearchConfiguration()
         {
-            _connectionSettings = new ConnectionSettings(CreateUri(9200)).DefaultIndex("nusearch")
-                .DefaultMappingFor<Package>(i => i
-                    .TypeName("package")
-                    .IndexName("nusearch")
-                );
+            _connectionSettings = new ConnectionSettings(CreateUri(9200))
+                .DefaultIndex("nusearch").DefaultMappingFor<Package>(i => i
+                    .IndexName("nusearch"))
+                .PrettyJson()
+                .DisableDirectStreaming(true);
         }
 
         private static readonly ConnectionSettings _connectionSettings;

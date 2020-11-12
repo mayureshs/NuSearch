@@ -12,7 +12,7 @@ namespace NuSearch.Indexer
 {
     class Program
     {
-        private static ElasticClient Client { get; set; }
+        private static IElasticClient Client { get; set; }
         private static NugetDumpReader DumpReader { get; set; }
         private static string CurrentIndexName { get; set; }
 

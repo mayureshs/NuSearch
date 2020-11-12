@@ -31,17 +31,17 @@ namespace NuSearch.Web.Models
 			this.Tags = Array.Empty<string>();
 		}
 
-		public SearchForm Clone() => new SearchForm
-		{
-			Page = this.Page,
-			Significance = this.Significance,
-			Query = this.Query,
-			Author = this.Author,
-			Tags = this.Tags,
-			PageSize = this.PageSize,
-			Sort = this.Sort,
-		};
-	}
+        public SearchForm Clone() => new SearchForm
+        {
+            Page = this.Page,
+            Significance = this.Significance,
+            Query = this.Query,
+            Author = this.Author,
+            Tags = this.Tags,
+            PageSize = this.PageSize,
+            Sort = this.Sort,
+        };
+    }
 
 
 }
